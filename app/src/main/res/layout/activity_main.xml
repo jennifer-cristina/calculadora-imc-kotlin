@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:background="#C8E4E5">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculadora IMC!"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:hint="Nome"
+        android:textSize="23dp"
+        android:layout_marginTop="30dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:width="200dp"
+        android:hint="Altura"
+        android:textSize="23dp"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:hint="Peso"
+        android:textSize="24dp"
+        android:inputType="numberDecimal"/>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/calcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            android:text="Calcular"
+            android:backgroundTint="@color/teal_200"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/sair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            android:text="Sair"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="24sp"/>
+
+</LinearLayout>
