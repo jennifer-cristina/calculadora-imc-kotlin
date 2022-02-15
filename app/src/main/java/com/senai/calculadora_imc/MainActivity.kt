@@ -7,34 +7,40 @@ import android.widget.EditText
 import android.widget.TextView
 import java.text.DecimalFormat
 
+    private lateinit var nomeEditText:EditText
+    private lateinit var alturaEditText: EditText
+    private lateinit var pesoEditText: EditText
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Chamando o conteúdo da TextView pelo id e colocando em uma variável
         val calcular = findViewById<Button>(R.id.calcular)
         val sair = findViewById<Button>(R.id.sair)
         val decimal = DecimalFormat("#.##")
 
         calcular.setOnClickListener(){
-        val nome = findViewById<EditText>(R.id.nome).text.toString()
-        val altura = findViewById<EditText>(R.id.altura).text.toString().toDouble()
-        val peso = findViewById<EditText>(R.id.peso).text.toString().toDouble()
-        val resultado = findViewById<TextView>(R.id.resultado)
-        val calculo =   peso / (altura * altura)
 
-            if( calculo < 18.5)
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está abaixo do peso."
-            else if(calculo < 25)
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está com peso ideal!"
-            else if(calculo < 30)
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está levemente acima do peso."
-            else if(calculo < 35)
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está com obesidade grau I"
-            else if(calculo < 40)
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está com obesidade grau II"
-            else
-                resultado.text = nome + ", seu IMC é " + decimal.format(calculo) + "\n" + "você está com obesidade grau III."
+        nomeEditText = findViewById(R.id.nome)
+        alturaEditText = findViewById(R.id.altura)
+        pesoEditText = findViewById(R.id.peso)
+
+        val resultadoTextView = findViewById<TextView>(R.id.resultado)
+
+        if(validarCampos()) {
+
+            val nome = nomeEditText.text.toString()
+            val altura = alturaEditText.text.toString().toDouble()
+            val peso = pesoEditText.text.toString().toDouble()
+
+            val imc = calcularImc(peso, altura)
+
+            resultadoTextView.text = nome + " seu imc é " + decimal.format(imc) + "\n"  + situacaoAluno(imc)
+
+        }
 
         }
 
@@ -42,5 +48,25 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    fun validarCampos(): Boolean {
+        var noError = true
+        if (nomeEditText.text.isBlank()) {
+            nomeEditText.setError("Digite seu nome!")
+            noError = false
+        }
+
+        if (alturaEditText.text.isBlank()) {
+            alturaEditText.setError("Digite sua altura!")
+            noError = false
+        }
+
+        if (pesoEditText.text.isBlank()) {
+            pesoEditText.setError("Digite seu peso!")
+            noError = false
+        }
+
+        return noError
     }
 }
