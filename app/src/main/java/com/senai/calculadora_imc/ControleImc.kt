@@ -6,15 +6,15 @@ fun calcularImc(peso: Double, altura: Double): Double {
 
 fun situacaoAluno(imc: Double): String {
     if (imc < 18.5)
-        return "e você está abaixo do peso."
+        return "você está abaixo do peso."
     else if (imc < 25)
-        return "e você está com peso ideal!"
+        return "você está com peso ideal!"
     else if (imc < 30)
-        return "e você está levemente acima do peso."
+        return "você está levemente acima do peso."
     else if (imc < 35)
-        return "e você está com obesidade grau I"
+        return "você está com obesidade grau I"
     else if (imc < 40)
-        return "e você está com obesidade grau II"
+        return "você está com obesidade grau II"
     else
-        return "e você está com obesidade grau III."
+        return "você está com obesidade grau III."
 }
